@@ -13,13 +13,11 @@
 
 <body>
 
-    <h1>hjvbnkhj</h1>
-
+    
     <div id="app1">
         <p>{{title}}</p>
         <h2>{{ say('me') }}</h2>
         <h5>{{said('me')}}</h5>
-
     </div>
 
     <header>
@@ -28,24 +26,23 @@
 
 
     <div class="container">
-        <div class="list-blog">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi sunt eveniet maxime magni in, nostrum
-                facilis, temporibus, quam facere sint est blanditiis harum dicta. Tempore suscipit ut hic. Deleniti,
-                qui.</p>
-        </div>
+       
         <div id="app">
+
             <div class="cart">Giỏ hàng ({{ cardNumber }})</div>
+
             <div class="product">
+
                 <div class="product-image">
                     <div class="image">
                         <img v-bind:src="getProduct.image" alt="">
                     </div>
                 </div>
+
                 <div class="product-content">
-                    <h3 class="title">
-                    <a v-bind:href="url" v-bind:target="x">{{ title }}</a>
-                    </h3>
-                    <p class="brand">Thương hiệu: No brand</p>
+                    <h3 class="title"><a v-bind:href="url" v-bind:target="x">{{ title }}</a></h3>
+                    
+
                     <p class="quantity" v-if="getProduct.quantity > 0">Còn lại: {{ getProduct.quantity }} Sản phẩm</p>
                     <p class="quantity" v-if="getProduct.quantity <= 0">Sản phẩm đã hết hàng</p>
 

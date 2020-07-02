@@ -2,7 +2,7 @@
 var a='6'
 
 
-
+console.log(++a + ++a)
 // console.log(a++ + a--)
 //a++ =6 sau do a=7
 //+

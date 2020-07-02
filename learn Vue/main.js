@@ -24,16 +24,20 @@ setTimeout(() => {
     aa.title= ' Cho ha may'
 }, 5000);
 
+
+
+
 var vueInstance = new Vue({
     el: '#app',
     data: {
+        cardNumber: 1,
         title: 'quano thun nam thể thao hàng VNXK vải dày mịn - Vải Đốm',
         url: 'https://www.lazada.vn/products/ao-thun-nam-the-thao-hang-vnxk-vai-day-min-vai-dom-i265780948-s382816279.html',
         x: '_blank',
         price: 20000,
         sale: 0.1,
         selectedProduct: 2,
-        cardNumber: 1,
+        
         listProductDetail: [
             {
                 image: './images/red.jpg',
@@ -89,8 +93,11 @@ var vueInstance = new Vue({
             return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number);
         },
         getProduct() {
-            let index = this.selectedProduct;
+            var index = this.selectedProduct;
             return this.listProductDetail[index];
         }
+
     }
 });
+
+
