@@ -2,13 +2,22 @@
     --dark: #000a36;
 }
 body{
+    font-family: Helvetica, Arial, sans-;
     margin: 0;
     padding: 0;
     background: var(--dark);
     display:flex;
+    flex-direction: column;
     height:100vh;
 }
-
+#logo{
+    width: 100%;
+    display:flex;
+}
+#logo img{
+    margin: 20px auto;
+    width:15%;
+}
 #app{
     position: relative;
     min-width:500px;
@@ -42,7 +51,7 @@ input{
     padding: 20px;
     outline: none;
     border: 1px solid #ffffff;
-    background: #f1f1f1;
+    background: #fff;
     border-radius: 0 50px 50px 0;
     box-shadow: 4px 4px 18px #0b17483b;
     width: 10%;
@@ -96,7 +105,7 @@ button::before {
     
     z-index: 1;
 }
-button:hover::before{
+button:hover::before, button:active::before{
     animation: x .9s linear;
 }
 @keyframes x{
@@ -132,20 +141,20 @@ button:hover{
     bottom:-14%;
 }
 .out{
-    color:#fff;
+    min-width: 80px;
+    font-size: 80px;
+    color: #fff;
     display: inline-block;
     line-height: 1em;
-    background: #001369;
-    border-radius: 50px;
+    background: #059afd;
+    border-radius: 100%;
     padding: 20px;
 }
 
-.bounce-enter-active {
+/* .bounce-enter-active {
     animation: bounce-in .5s;
   }
-  .bounce-leave-active {
-    animation: bounce-in .5s reverse;
-  }
+ 
   @keyframes bounce-in {
     0% {
       transform: scale(1);
@@ -155,5 +164,26 @@ button:hover{
     }
     100% {
       transform: scale(1);
+    }
+  } */
+
+  @media (max-width: 740px){
+      #logo img{
+          margin-top:20%;
+          width: 67%;
+      }
+    #app{
+        min-width: 200px;
+        
+    }
+    .out{
+        min-width: 70px;
+    font-size: 70px;
+    }
+    .onright{
+        right: auto;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, 0%);
     }
   }

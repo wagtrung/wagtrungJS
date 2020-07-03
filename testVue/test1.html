@@ -6,31 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>Document</title>
+    <link href="https://unpkg.com/animate.css@3.5.2/animate.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <title>WagTrung Cal</title>
 </head>
 
 <body>
 
+    <header>
+        <div id="logo">
+            <img  src="e2.png" alt="">
+        </div>
+        
+    </header>
 
-
-    <div id="app">
+    <div :class="{'bounceIn animated': animated}" @animationend="animated = false" id="app">
 
         <div class="flex">
-            <h1>bang cu chuong: </h1>
-            <input type="text" v-model='quantity' v-on:keyUp="resetCount()"></input>
+            <h1>Bảng Cửu Chương: </h1>
+            <input type="text" v-model='quantity' v-on:keyUp="resetCount(quantity)"></input>
         </div>
 
 
-        <h2> {{ quantity }} x {{ up }} = 
-            <transition name="bounce">
-                <div v-if="show" class='out'>{{ count }}</div>
-            </transition>
-            </h2>
+        <h2> {{ quantity }} x {{ up }} =
+
+            <div :class="{'jello animated': animated}" @animationend="animated = false" class='out'>{{ count }}</div>
+
+        </h2>
 
         <div class="onright">
-            <button v-on:click="countUp($event, quantity)" @click="show = !show">Next</button>
-            <button v-on:click="countDown($event, quantity)">Back</button>
-            <button v-on:click="resetCount()">Clear</button>
+            <button v-on:click="countUp($event, quantity)" @click="animate">Next</button>
+            <button v-on:click="countDown($event, quantity)" @click="animate">Back</button>
+            <button v-on:click="resetCount(1)">Clear</button>
         </div>
 
 
@@ -69,19 +76,21 @@
             b: 0,
             quantity: 1,
             up: 0,
-            show: false,
+            animated: false
         },
         methods: {
-            // animate(){
-            //     this.show = true;
-
-            // },
+            animate() {
+                
+                this.animated = true
+           
+            },
             countUp(e, v) {
 
                 // console.log(e.target)
-                if (this.up <10) {
-                this.up++
-                this.count += parseInt(v);}
+                if (this.up < 10) {
+                    this.up++
+                    this.count += parseInt(v);
+                }
             },
             countDown(e, v) {
                 if (this.up > 0) {
@@ -89,32 +98,37 @@
                     this.count -= parseInt(v);
                 }
             },
-            resetCount() {
+            resetCount(x) {
+                if( x <10){
                 this.count = 0
-                this.up = 0
+                this.up = 0}
+                else{
+                    alert(' bang cuu chuong nho hon 9')
+                    this.quantity=1
+                }
             },
 
-            mouse(k) {
-                this.clientX = k.clientX;
-                this.clientY = k.clientY
+            // mouse(k) {
+            //     this.clientX = k.clientX;
+            //     this.clientY = k.clientY
 
-            },
-            submit(e) {
-                console.log(e)
-            }
+            // },
+            // submit(e) {
+            //     console.log(e)
+            // }
         },
         computed: {
 
-            addA() {
-                console.log('a ne')
-                return this.a
+            // addA() {
+            //     console.log('a ne')
+            //     return this.a
 
-            },
-            addB() {
-                console.log('b ne')
-                return this.b
+            // },
+            // addB() {
+            //     console.log('b ne')
+            //     return this.b
 
-            }
+            // }
         }
 
     })
