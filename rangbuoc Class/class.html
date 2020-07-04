@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="appClass" v-bind:style="objStyle">
+        <h1 class="a" v-bind:class="objClass">hhi</h1>
+        <button v-on:click="bActive" v-bind:style="{padding: '20px', fontSize:'20px'}">b let blue</button>
+        <button v-on:click="cActive">c let yellow</button>
+    </div>
+</body>
+<script>
+    var newVue = new Vue({
+        el: '#appClass',
+        data: {
+            isb: false,
+            isc: false,
+            bgurl: 'https://cdn.pixabay.com/photo/2020/03/12/22/23/greens-4926370_960_720.jpg'
+
+        },
+        methods: {
+
+            bActive() {
+                this.isb = !this.isb
+            },
+            cActive() {
+                this.isc = !this.isc
+            }
+        },
+        computed: {
+            objStyle() {
+                return {
+                    backgroundImage: 'url(' + this.bgurl + ')',
+                    border: '3px solid red'
+                }
+
+            },
+            objClass() {
+                return { b: this.isb, c: this.isc }
+            }
+        }
+    })
+</script>
+
+</html>
