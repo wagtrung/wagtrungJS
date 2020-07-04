@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+    <!-- ====== CSS ====== -->
+    <style>
+.linkTab li{
+    
+     border: 2px solid #333;
+     padding:10px;
+     list-style: none;
+     display: inline-block;
+     cursor:pointer;
+}
+.tab{
+    display: inline-block;
+width: 100px;
+height: 100px;
+font-size: 100px;
+line-height: 100px;
+text-align: center;
+color: white
+}
+.tab1Red{
+
+background:red;
+}
+.tab2Green{
+
+background:green;
+}
+.tab3Blue{
+
+background:blue;
+}
+    </style>
+    
+    <!-- ====== APP ====== -->
+    <div id="app">
+
+        <ul class="linkTab">
+            <li v-on:click="changeRed">Tab A</li>
+            <li v-on:click="changeGreen">Tab B</li>
+            <li v-on:click="changeBlue">Tab C</li>
+        </ul>
+
+        <div class="tab tab1Red" v-if="selected ==='tab1Red'">A</div>
+        <div class="tab tab2Green" v-if="selected ==='tab2Green'">B</div>
+        <div class="tab tab3Blue" v-if="selected ==='tab3Blue'">C</div>
+        
+
+
+    </div>
+</body>
+
+<!-- ====== Vue JS ====== -->
+<script>
+    var newVue = new Vue({
+
+        el: '#app',
+        data: {
+            selected: 'tab1Red'
+        },
+
+        methods: {
+            changeRed() {
+                this.selected='tab1Red'
+            },
+            changeGreen() {
+                this.selected='tab2Green'
+            },
+            changeBlue() {
+                this.selected='tab3Blue'
+            },
+        },
+
+        computed: {
+            
+        }
+
+    })
+</script>
+
+</html>
