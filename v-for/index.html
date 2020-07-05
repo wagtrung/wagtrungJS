@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+    <!-- ====== CSS ====== -->
+    <style>
+
+    </style>
+
+    <!-- ====== APP ====== -->
+    <div id="app">
+        <ul>
+
+            <h1>for Array object</h1>
+            <h5>by v-if when obj in array have value = sms1</h5>
+            <li v-for=" (valueLine, index) in list" :key="valueLine.sms" v-if="valueLine.sms==='sms1'">
+                {{index}} ---- {{ valueLine.sms}}
+            </li>
+            <hr>
+
+            <h5>by computed when objs in array have isOk = true</h5>
+            <li v-for=" (valueLine, index) in showList" :key="valueLine.sms">
+                {{index}} ---- {{ valueLine.sms}}
+            </li>
+            <hr>
+
+            <h5>all</h5>
+            <li v-for=" x in list">
+                {{x}}
+            </li>
+
+
+
+            <h1>for Object</h1>
+            <li v-for=" (value, key, index) in objList" >
+                in: {{index}} - key:{{ key}} - value:{{value}}
+            </li>
+            <hr>
+            <li v-for=" x in objList">
+                {{x}}
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+<!-- ====== Vue JS ====== -->
+<script>
+    var newVue = new Vue({
+
+        el: '#app',
+        data: {
+            objList: {
+                k: true,
+                a: 'a ne ban',
+                b: 'b ne ban',
+                c: 12,
+                d: [1, 2, 3, 4]
+            },
+            list: [
+                99,
+                98,
+                97,
+                { a: 'a', sms: 'sms1', isOk: true },
+                { a: 'aa', sms: 'sms2', isOk: false },
+                { a: 'aaa', sms: 'sms3', isOk: true },
+                { a: 'aaa', sms: '', isOk: true },
+                { a: 'aaa', isOk: true }
+            ]
+
+        },
+
+        methods: {
+
+        },
+
+        computed: {
+            showList() {
+                return this.list.filter(function (u) {
+                    if(u.isOk === true){
+                    return u}
+                })
+            }
+        }
+
+    })
+</script>
+
+</html>

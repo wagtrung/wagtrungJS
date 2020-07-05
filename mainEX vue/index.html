@@ -14,11 +14,11 @@
 <body>
 
     
-    <div id="app1">
+    <!-- <div id="app1">
         <p>{{title}}</p>
         <h2>{{ say('me') }}</h2>
         <h5>{{said('me')}}</h5>
-    </div>
+    </div> -->
 
     <header>
         <h1>Header</h1>
@@ -40,34 +40,40 @@
                 </div>
 
                 <div class="product-content">
-                    <h3 class="title"><a v-bind:href="url" v-bind:target="x">{{ title }}</a></h3>
+                    <h3 class="title">
+                        <a v-bind:href="url" 
+                        v-bind:target="x">{{ title }}</a>
+                    </h3>
                     
-
                     <p class="quantity" v-if="getProduct.quantity > 0">Còn lại: {{ getProduct.quantity }} Sản phẩm</p>
                     <p class="quantity" v-if="getProduct.quantity <= 0">Sản phẩm đã hết hàng</p>
 
                     <div class="wrapper-price">
-                        <div class="final-price">{{ formatFinalPrice }}</div>
-                        <div class="origin-price">{{ formatOriginalPrice }}</div>
+                        <div class="final-price">{{ VNDchoGiaKM }}</div>
+                        <div class="origin-price">{{ VNDchoGiaGoc }}</div>
                         <div class="sale-price">-{{sale * 100}}%</div>
                     </div>
+
                     <div class="wrapper-color">
                         <div class="text">Màu sắc</div>
                         <div class="list-color">
                             <p class="color-text">{{ getProduct.textColor }}</p>
+
                             <ul>
                                 <li 
                                     v-for="(item, index) in listProductDetail"
-                                    v-bind:class="classActive(index)"
                                     v-bind:key="index"
-                                    v-on:click="handleClickColor($event, index)">
+
+                                    v-bind:class="classActive(index)"
+
+                                    v-on:click="handleClickColor( index)">
+
                                     <img v-bind:src="item.image" v-bind:alt="item.textColor">
                                 </li>
-                                <!-- <li><img src="./images/blue.jpg" alt="color"></li> -->
-                                <!-- <li><img src="./images/red.jpg" alt="color"></li> -->
                             </ul>
                         </div>
                     </div>
+                    
                     <button 
                         v-on:click="handleAddToCart"
                         class="add-to-cart">Add to cart</button>

@@ -1,28 +1,28 @@
-var aa = new Vue({
-    el: '#app1',
-    data: {
-        title: 'toi la trung'
-    },
-    methods: {
-        say(x){
-            return x +'la con cho'
-        },
+// var aa = new Vue({
+//     el: '#app1',
+//     data: {
+//         title: 'toi la trung'
+//     },
+//     methods: {
+//         say(x){
+//             return x +'la con cho'
+//         },
 
-        said: function(x){
-            return x +'me may'
-        }
-    }
-});
+//         said: function(x){
+//             return x +'me may'
+//         }
+//     }
+// });
 
-console.log(aa);
+// console.log(aa);
 
-setTimeout(function () {
-    aa.title= ' tao la Cho'
-},4000)
+// setTimeout(function () {
+//     aa.title= ' tao la Cho'
+// },4000)
 
-setTimeout(() => {
-    aa.title= ' Cho ha may'
-}, 5000);
+// setTimeout(() => {
+//     aa.title= ' Cho ha may'
+// }, 5000);
 
 
 
@@ -36,7 +36,7 @@ var vueInstance = new Vue({
         x: '_blank',
         price: 20000,
         sale: 0.1,
-        selectedProduct: 2,
+        selectedProduct: 2, //la cai so 3
         
         listProductDetail: [
             {
@@ -53,6 +53,7 @@ var vueInstance = new Vue({
                 textColor: 'Màu Đen'
             }, 
         ],
+
         listDesc: [
             'Chất liệu: polyester và thun',
             'Thoát mồ hôi tốt',
@@ -65,13 +66,13 @@ var vueInstance = new Vue({
         <p><strong><span style="background-color:#8e44ad">fhsdjkfhsk&nbsp; hsdjkfk&nbsp;</span></strong></p>`
     },
     methods: {
-        handleClickColor(e, index) {
+        handleClickColor( index) {
             this.selectedProduct = index;
             // console.log(e, index, this);
         },
         classActive(index) {
             return {
-                active: this.selectedProduct === index
+                active1: this.selectedProduct === index
             }
         },
         handleAddToCart(e) {
@@ -84,17 +85,15 @@ var vueInstance = new Vue({
         }
     },
     computed: {
-        formatOriginalPrice() {
-            var number = this.price;
-            return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number);
+        VNDchoGiaGoc() {
+            return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(this.price);
         },
-        formatFinalPrice() {
+        VNDchoGiaKM() {
             var number = this.price - this.sale * this.price;
             return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number);
         },
         getProduct() {
-            var index = this.selectedProduct;
-            return this.listProductDetail[index];
+            return this.listProductDetail[this.selectedProduct];
         }
 
     }

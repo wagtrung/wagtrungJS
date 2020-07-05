@@ -88,12 +88,12 @@ img {
 .list-color ul li {
     width: 40px;
     height: 40px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     margin-right: 20px;
 }
 .list-color ul li:hover,
-.list-color ul li.active {
-    border-color: #f57224;
+.list-color ul li.active1 {
+    border-color: #3924f5;
 }
 
 .description {
